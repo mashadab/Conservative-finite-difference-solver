@@ -1,3 +1,8 @@
+% Self-similar drainage from a linear confined aquifer
+% Author: Mohammad Afzal Shadab
+% Date: 03/30/2021
+% Email: mashadab@utexas.edu
+
 % Time stepping
 tDmax = 1;
 Nt = 100;
@@ -34,7 +39,7 @@ end
 
 %% Compute the self-similar solutions
 tD      = tDmax;
-eta_num = Grid.xc/sqrt(4 * tD);
+eta_num = (Grid.xc-0.5*Grid.dx)/sqrt(4 * tD);
 
 eta_ana = linspace(0,3,1e2);
 hD_ana = erf(eta_ana);
