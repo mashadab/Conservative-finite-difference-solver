@@ -1,3 +1,8 @@
+% Self-similar recharge in a linear confined aquifer
+% Author: Mohammad Afzal Shadab
+% Date: 03/31/2021
+% Email: mashadab@utexas.edu
+
 % Time stepping
 tDmax = 1;
 Nt = 100;
@@ -34,7 +39,7 @@ end
 %% Self-similar solution
 tD = tDmax;
 eta = Grid.xc / sqrt(4*tD);
-Pi = erf(eta);
+Pi = hD_num / sqrt(4*tD);
 
 eta_ana = linspace(0,2,1e2);
 Pi_ana = @(eta) exp(-eta.^2)/sqrt(pi) - eta.*erfc(eta);
