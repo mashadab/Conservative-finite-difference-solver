@@ -41,7 +41,7 @@ Jac = @(u) D*(GU(u)*M*dF(u)+F(u)*G);
 %% Boundary conditions - for update!
 BC.dof_dir = Grid.dof_xmax; 
 BC.dof_f_dir = Grid.dof_f_xmax;
-BC.g= 0 %hD_ana(Grid.xc(Grid.dof_xmax),n_exp);
+BC.g= hD_ana(Grid.xc(Grid.dof_xmax),n_exp);
 BC.dof_neu= [];
 BC.dof_f_neu= [];
 BC.qb = [];
@@ -53,13 +53,12 @@ kmax = 20;  % maximum number of iterations
 
 % Initial guess
 hD = ones(Grid.N,1);
-hD(BC.dof_dir) = hD_ana(Grid.xc(Grid.dof_xmax),n_exp);
 
 nres = norm(res(hD)); ndhD = 1; k = 0;
 while (nres > tol || ndhD > tol) && k < kmax
     dhD = solve_lbvp(Jac(hD),-res(hD),B,BC.g,N);
     hD  = hD + dhD;
-    hD(BC.dof_dir) = hD_ana(Grid.xc(Grid.dof_xmax),n_exp);
+    
     nres = norm(N'*res(hD)); ndhD = norm(N'*dhD);
     k = k+1;
     fprintf('it = %d: nres = %3.2e  ndhD = %3.2e\n',k,nres,ndhD)
