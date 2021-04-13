@@ -23,12 +23,12 @@ M = 0.5*Grid.dx*abs(G);
 % Dir => for update!
 BC.dof_dir = Grid.dof_xmax;
 BC.dof_f_dir = Grid.dof_f_xmax;
-BC.g = hD_ana(Grid.xc(Grid.dof_xmax),Pi,n_exp);
+BC.g = 0;
 
 % Neu => residual
 BC.dof_neu = Grid.dof_xmin;
 BC.dof_f_neu = Grid.dof_f_xmin;
-BC.qb = 0.0;
+BC.qb = 1.0;
 [B,N,fn] = build_bnd(BC,Grid,I);
 
 %% Residual and Jacobian
@@ -43,7 +43,7 @@ dF = @(u) spdiags(u.^n_exp,0,Grid.Nx,Grid.Nx);
 GU = @(u) spdiags(G*u,0,Grid.Nx+1,Grid.Nx+1);
     
 % Residual and Jacobian
-res = @(u) D*F(u)*G*u + fs;
+res = @(u) D*F(u)*G*u + fs + fn;
 Jac = @(u) D*(GU(u)*M*dF(u)+F(u)*G);
 
 %% Newton iteration
@@ -52,13 +52,15 @@ kmax = 20;  % maximum number of iterations
 
 % Initial guess
 hD = ones(Grid.N,1);
+hD(BC.dof_dir) = hD_ana(Grid.xc(Grid.dof_xmax),Pi,n_exp);
 
 %% Newton-Raphson loop
 nres = norm(res(hD)); ndhD = 1; k = 0;
+
 while (nres > tol || ndhD > tol) && k < kmax
     dhD = solve_lbvp(Jac(hD),-res(hD),B,BC.g,N);
     hD  = hD + dhD;
-    
+    hD(BC.dof_dir) = hD_ana(Grid.xc(Grid.dof_xmax),Pi,n_exp);
     nres = norm(N'*res(hD)); ndhD = norm(N'*dhD);
     k = k+1;
     fprintf('it = %d: nres = %3.2e  ndhD = %3.2e\n',k,nres,ndhD)
