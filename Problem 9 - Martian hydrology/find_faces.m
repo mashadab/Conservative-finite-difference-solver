@@ -1,6 +1,6 @@
 function [dof_f_ext] = find_faces(cell_dofs,D,Grid)
-% author: Marc Hesse
-% date: 7 Sep 2016
+% author: Mohammad Afzal Shadab
+% date: 26 April 2021
 % Description:
 % Find the dofs of the faces associated with a given vector of cell dof's
 % and separates them into interior and exterior faces. The information 
