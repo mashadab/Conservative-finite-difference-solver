@@ -1,6 +1,6 @@
 function [Kd] = comp_mean_matrix(K,p,Grid) % repo MDOT 
-% author: Mohammad Afzal Shadab
-% date: 28 March 2021
+% author: Mohammad Afzal Shadab	
+% date: 9 April 2021
 % Description:
 % Takes coefficient field, K, defined at the cell centers and computes the
 % mean specified by the power, p and returns it in a sparse diagonal
@@ -50,8 +50,7 @@ if strcmp(Grid.geom,'spherical_shell_theta_phi')
     My = kron(speye(Nx),My);                 % 2D mean-matrix in y-dir
     M  = [Mx;My];                            % 2D mean-matrix
     dof_f_bnd = [Grid.dof_f_xmin; Grid.dof_f_xmax];   % 0 on bnd's
-    M(dof_f_bnd,:) = 0;
-    
+    M(dof_f_bnd,:) = 0;   
 end
 
 Kmean = (M*K.^p).^(1/p);                % Compute general power mean
