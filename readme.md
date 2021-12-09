@@ -11,11 +11,10 @@ The University of Texas at Austin
 ## 2-line Summary
 This work is on developing a second order, staggered grid based finite difference solver in 1/2/3D. The information is given in the comments and test scripts are also enclosed.
 
-<p align="center">
-<img src="./Cover_photos/Cover0.jpeg" height="370">
-  <img src="./Cover_photos/Cover500.jpeg" height="370">
-</p>
-Figure : The enclosed Pressure and Saturation contour plots correspond to the simulation of the Nechelik reservoir (80 X 75 cells) with 6 wells (2 horizontal, 4 vertical) for 1000 days with a time step of 0.1 days. After 500 days, water is being injected into two wells on the bottom left for secondary recovery.
+# Spreading of a mound inside a porous domain: Conservative vs Non-Conservative schemes
+## Cartesian coordinates
+
+## Spherical shell ($$\theta$$) coordinates
 
 ### Dependences
 
