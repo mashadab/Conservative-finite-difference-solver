@@ -12,9 +12,17 @@ The University of Texas at Austin
 This work is on developing a second order, staggered grid based finite difference solver in 1/2/3D. The information is given in the comments and test scripts are also enclosed.
 
 # Spreading of a mound inside a porous domain: Conservative vs Non-Conservative schemes
-## Cartesian coordinates
+## Cartesian (x-y) coordinates
 
-## Spherical shell ($$\theta$$) coordinates
+
+https://user-images.githubusercontent.com/39770999/145355040-97efdb83-a9a9-493e-8f71-90c00034012b.mov
+
+
+## Spherical shell (r-Θ) coordinates
+
+
+https://user-images.githubusercontent.com/39770999/145355049-a65e9fa5-bf49-4145-8ad2-6aa004251119.mov
+
 
 ### Dependences
 
