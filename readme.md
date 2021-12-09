@@ -8,7 +8,7 @@
 Oden Institute for Computational Engineering and Sciences / Jackson School of Geosciences / University of Texas Institute for Geophysics
 The University of Texas at Austin
 
-## 2-line Summary
+## 3-line Summary
 This work is on developing a second order, staggered grid based finite difference solver in 1/2/3D. The information is given in the comments and test scripts are also enclosed. The solver has been validated with analytical results.
 
 # Spreading of a mound inside a porous domain: Conservative vs Non-Conservative schemes
