@@ -1,4 +1,4 @@
-function [dof_f_ext] = find_faces(cell_dofs,D,Grid)
+function [dof_f_ext, dof_f] = find_faces(cell_dofs,D,Grid)
 % author: Mohammad Afzal Shadab
 % date: 26 April 2021
 % Description:
@@ -34,3 +34,4 @@ DD = D(cell_dofs,:);
 % entries will cancel. Therefore, only the sum of the columns corresponding
 % to exterior faces will be non-zero.
 dof_f_ext = Grid.dof_f(abs(sum(DD,1))>1e-10);
+dof_f     = Grid.dof_f(abs(sum(abs(DD),1))>1e-10);
